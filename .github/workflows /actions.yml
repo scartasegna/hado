@@ -1,9 +1,8 @@
 name: actions
 
 on:
-  pull_request:
-    types:
-      - closed
+  push:
+    branches: [ "main" ]
 
 env: 
   ECR_REPOSITORY: "hado-actions-ecr"
