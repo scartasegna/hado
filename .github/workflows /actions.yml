@@ -1,5 +1,9 @@
 name: actions
 
+on:
+  push:
+    branches: [ "main" ]
+
 env: 
   ECR_REPOSITORY: "hado-actions-ecr"
   AWS_REGION: "us-east-1"
