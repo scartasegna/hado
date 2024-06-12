@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 env: 
-  ECR_REPOSITORY: "975050082420.dkr.ecr.us-east-1.amazonaws.com/hado-ecr"
+  ECR_REPOSITORY: "hado-ecr"
   AWS_REGION: "us-east-1"
 
 jobs:
