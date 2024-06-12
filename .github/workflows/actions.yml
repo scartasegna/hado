@@ -45,7 +45,7 @@ jobs:
     - name: Download task definition
       run: |
           aws ecs describe-task-definition --task-definition hado-app-task \
-          --query taskDefinition > task-definition.json
+          --query taskDefinition > app/task-definition.json
   
     - name: Render Amazon ECS task definition
       id: task-def
