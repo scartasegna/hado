@@ -5,6 +5,6 @@ console.log('Server has started');
 
 function onRequest(request, response){
   response.writeHead(200);
-  response.write('Hello V1.1');
+  response.write('Hello V1.3');
   response.end();
 }
