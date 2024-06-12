@@ -1,10 +1,5 @@
 name: actions
 
-on:
-  pull_request:
-    types:
-      - closed
-
 env: 
   ECR_REPOSITORY: "hado-actions-ecr"
   AWS_REGION: "us-east-1"
