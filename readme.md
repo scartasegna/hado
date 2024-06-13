@@ -3,11 +3,11 @@ To make this project work, you need:
 
 - An AWS account where all resources will be deployed
 - Terraform installed in you pc
+- A firts image of the app already built and ready to be tagged and uploaded 
 
 Project structure:
 
  - **infra**:  Terraform files in which all resources are defined
- - 
  - **app**: a simple node.js  app with its Dockerfiles, which is used to create the container that is uploaded to ECR
 
 ### Step 1 Create ECR registry and upload the first container
