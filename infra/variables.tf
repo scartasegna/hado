@@ -20,7 +20,7 @@ variable "ec2_task_execution_role_name" {
 
 variable "app_image" {
     description = "Docker image to run in the ECS cluster"
-    default = "kodekloud/ecs-project1:latest"
+    default = "767398122712.dkr.ecr.us-east-1.amazonaws.com/hado-ecr"
 }
 
 variable "app_port" {
@@ -29,16 +29,12 @@ variable "app_port" {
 
 }
 
-variable "health_check_path" {
-  default = "/"
-}
-
 variable "fargate_cpu" {
     description = "Fargate instance CPU units to provision (1 vCPU = 1024 CPU units)"
-    default = "1024"
+    default = "256"
 }
 
 variable "fargate_memory" {
     description = "Fargate instance memory to provision (in MiB)"
-    default = "2048"
+    default = "1024"
 }

@@ -7,17 +7,17 @@ resource "aws_ecs_task_definition" "app" {
     execution_role_arn       = aws_iam_role.ecs_execution_role.arn
     network_mode             = "awsvpc"
     requires_compatibilities = ["FARGATE"]
-    cpu                      = 256
-    memory                   = 1024
+    cpu                      = var.fargate_cpu
+    memory                   = var.fargate_memory
     container_definitions    =  jsonencode([
     {
       name = "app"
-      image = "211125769956.dkr.ecr.us-east-1.amazonaws.com/hado-ecr:latest"
+      image = var.app_image
       memory                  = 1024
       memory_reservation      = 1024
       portMappings = [
         {
-          containerPort = 3000
+          containerPort = var.app_port
           hostPort = 3000
         }
       ]
