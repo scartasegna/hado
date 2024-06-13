@@ -4,6 +4,6 @@ http.createServer(onRequest).listen(3000);
 console.log('Server has started');
 
 function onRequest(request, response){
-  response.write('Hello V1.5.1');
+  response.write('Hello V1.6');
   response.end();
 }
