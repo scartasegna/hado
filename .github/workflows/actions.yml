@@ -2,8 +2,10 @@ name: actions
 
 on:
    pull_request:
-    types: [closed]
-    branches: [ "main" ]
+    types:
+       - closed
+    branches: 
+       - main
 
 env: 
   ECR_REPOSITORY: "hado-ecr"
@@ -11,7 +13,7 @@ env:
 
 jobs:
   build-and-deploy:
-    if: ${{ github.event.pull_request.conclusion == 'success'}}
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
     - name: Clone
