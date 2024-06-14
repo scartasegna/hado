@@ -3,15 +3,20 @@ name: actions
 on:
   push:
     branches: 
-       - master
+       - main
 
 env: 
   ECR_REPOSITORY: "hado-ecr"
   AWS_REGION: "us-east-1"
 
 jobs:
+  cat-event-data:
+    runs-on: ubuntu-latest
+    steps:
+    - name: cat ${github.event}
+      run: echo ${{ github.event.name }} 
   build-and-deploy:
-    if: github.event.pull_request.merged == true
+    if:  ${{ github.event.name }} == 'pull_request'
     runs-on: ubuntu-latest
     steps:
     - name: Clone
