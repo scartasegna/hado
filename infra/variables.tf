@@ -20,7 +20,7 @@ variable "ec2_task_execution_role_name" {
 
 variable "app_image" {
     description = "Docker image to run in the ECS cluster"
-    default = "767398122712.dkr.ecr.us-east-1.amazonaws.com/hado-ecr"
+    default = "096867239176.dkr.ecr.us-east-1.amazonaws.com/hado-ecr"
 }
 
 variable "app_port" {
