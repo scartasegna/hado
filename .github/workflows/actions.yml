@@ -9,17 +9,8 @@ env:
   ECR_REPOSITORY: "hado-ecr"
   AWS_REGION: "us-east-1"
 
-jobs:
-  cat-event-data:
-    runs-on: ubuntu-latest
-    steps:
-    - name: cat 
-      env:
-         GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-     
+jobs:     
   build-and-deploy:
-    if: github.event.name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
     - name: Clone
