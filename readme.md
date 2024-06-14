@@ -4,6 +4,8 @@ To make this project work, you need:
 - An AWS account where all resources will be deployed
 - Terraform installed in you pc
 - A firts image of the app already built and ready to be tagged and uploaded 
+- [Create an OpenID provider for the repo in AWS] (https://aws.amazon.com/blogs/security/use-iam-roles-to-connect-github-actions-to-actions-in-aws/).
+- Create a policy for the role allowing to push images to ECR and update the ECS task
 
 Project structure:
 
@@ -68,11 +70,10 @@ In order to do this we will need to configure a few secrets in the repository. I
 
 Before running the Action we will need the following assets under the repository configurations:
 
-| **Parameter**         | **type** | **Value**                                         |
-|-----------------------|----------|---------------------------------------------------|
-| ACCOUNT_ID            | secret   |  AWS accont ID for the cluster                    |
-| AWS_ACCESS_KEY_ID     | secret   | CLI access key ID for the user to update the task |
-| AWS_SECRET_ACCESS_KEY | secret   | CLI secret key ID for the user to update the task |
+| **Parameter**           | **type** | **Value**                                         |
+|-------------------------|----------|---------------------------------------------------|
+| AWS_GITHUB_ACTIONS_ROLE | secret   |  ARN for the role in AWS account                  |
+
 
 
 A quick look at the file `.github/workflows/actions.yaml` gives an overview of the steps:
@@ -103,6 +104,5 @@ Another workaround would be to block merge request to main under approval via a 
 
 #### TODO:
 
-- Create the user for this project IAM via terraform or replace it for an IAM identity provider (OpenID Connect), a role and a policy to enable trust between AWS account and GitHub Action for the org/repo/branch. 
 - Update the github actions using the new schema of passing data between steps  ```echo "::set-output name=image::$ECR_REGISTRY/${{ env.ECR_REPOSITORY }}:$IMAGE_TAG" ```.
  
