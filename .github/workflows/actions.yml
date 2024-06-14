@@ -13,10 +13,10 @@ jobs:
   cat-event-data:
     runs-on: ubuntu-latest
     steps:
-    - name: cat ${github.event}
-      run: echo ${{ github.event.name }} 
+    - name: cat 
+      run: echo ${ github.event} 
   build-and-deploy:
-    if:  ${{ github.event.name }} == 'pull_request'
+    if:  github.event.name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
     - name: Clone
