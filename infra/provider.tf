@@ -4,3 +4,14 @@ provider "aws" {
     secret_key = var.aws_secret_key
     region     = var.aws_region
 }
+
+
+terraform {
+
+  backend "s3" {
+    bucket = "tfstate-ado"
+    key = "state"
+    region = "us-east-1"
+    dynamodb_table = "hado-app-state"
+  }
+}

@@ -6,11 +6,13 @@ To make this project work, you need:
 - A firts image of the app already built and ready to be tagged and uploaded 
 - [Create an OpenID provider for the repo in AWS] (https://aws.amazon.com/blogs/security/use-iam-roles-to-connect-github-actions-to-actions-in-aws/).
 - Create a policy for the role allowing to push images to ECR and update the ECS task
+- Run and create the S3 bucket and the dynamoDB using the files on remote-state folder
 
 Project structure:
 
  - **infra**:  Terraform files in which all resources are defined
  - **app**: a simple node.js  app with its Dockerfiles, which is used to create the container that is uploaded to ECR
+ - **remote-state**: Terraform files to create the bucket and the dynamoDB table to the remote state. DO THIS BEFORE STEP 1
 
 ### Step 1 Create ECR registry and upload the first container
 
@@ -38,7 +40,6 @@ On the infra folder we have the following files
 
 | **file**       | **usage**                                                    |
 |----------------|--------------------------------------------------------------|
-| remote-state.tf| Configuration for s3 bucker + dynamodb terraform state file  |
 | network.tf     | VPC, public subnet, IG, RT and other network configuration   |
 | provider.tf    | AWS provider configuration                                   |
 | variables.tf   | porject variables definition. If not updated use AWS default profile |
@@ -59,8 +60,6 @@ After applying the terraform we should get:
 - A public subnet
 - A ECR cluster named as in the ecr.tf file with 1 task and 1 service already deployed
 - A Security group allowing access to port 3000 
-- A S3 bucket for terraform state file
-- A DynamoDB schema for locking the file
 
 ### Configure the repo to allow Github to deploy a new app version
 

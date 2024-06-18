@@ -2,7 +2,7 @@ resource "aws_s3_bucket" "terraform_state" {
   bucket = "tfstate-ado"
      
   lifecycle {
-    prevent_destroy = false
+    prevent_destroy = true
   }
 }
 
