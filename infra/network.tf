@@ -41,6 +41,3 @@ resource "aws_route_table_association" "public_subnet_asso" {
  route_table_id = aws_route_table.second_rt.id
 }
 
-resource "aws_ecs_cluster" "ecs_cluster" {
-  name = "hado-cluster"
-}
